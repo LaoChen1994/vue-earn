@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>setGet Test</title>
+	<script type="text/javascript" src="vue.min.js"></script>
+</head>
+<body>
+
+	<div id="app">
+		<div>first name = {{firstName}}</div>
+		<div>last name = {{lastName}}</div>
+		<div>full name = {{fullName}}</div>
+		<input v-model='fullName'>
+	</div>
+	<script type="text/javascript">
+		var vm = new Vue({
+		
+			el: "#app", 
+			data: {
+				firstName:"", 
+				lastName:"",
+				// fullName:"" 
+			}, 
+			computed:{
+				fullName: {
+					get: function(){
+						return this.fullName = this.firstName + " " + this.lastName;
+					}, 
+					set:function(newVal){
+						var splitName = newVal.split(" ");
+						this.firstName = splitName[0];
+						this.lastName = splitName[1];
+					}, 
+				}
+			}
+		
+		})
+
+		// vm.fullName = "Zhang San";
+
+		// vm.fullName = "Li Si";
+	</script>
+</body>
+
+</html>

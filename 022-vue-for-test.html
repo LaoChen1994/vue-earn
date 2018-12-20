@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue-for</title>
+	<script type="text/javascript" src="vue.min.js"></script>
+</head>
+<body>
+	<div id="app">
+		<ul>
+			<li v-for="(item, idx) in items">({{idx}}) {{item}}</li>
+		</ul>
+		<div v-for="(item, idx) in items">
+			<input type="checkbox" :id="idx" :value="item" v-model="checkedEl">
+			<label :for="idx">[{{idx}}].{{item}}</label>
+		</div>
+
+		<p>{{checkedEl}}</p>
+	</div>
+	
+	<div id="select-test">
+		<select v-model="selected">
+			<option disabled  value="请选择">请选择</option>}
+			
+			<option v-for="info in infos" :value="info.val">{{info.info}}/{{info.val}}</option>
+		</select>
+		<p>{{selected}}</p>
+	</div>
+	
+	<div id="app2">
+		<!-- 利用.lazy修饰符 让用户完成整体输入后再双向绑定,而不是时时绑定了 -->
+		<!-- <input type="textarea" v-model.lazy="info" placeholder="please edit me "> -->
+		<!-- 利用trim来去除最后的空格 -->
+		<textarea v-model.trim="info"></textarea>
+		<!-- <input type="textarea" v-model="info" placeholder="please edit me "> -->
+		<p> the  message is {{info}}</p>
+	</div>
+
+	<script type="text/javascript">
+		var vm = new Vue({
+		
+			el: "#app", 
+			data:{
+				items:["jump", "run", "swim"], 
+				checkedEl:[],
+			}
+		
+		});
+
+		var vm1 = new Vue({
+		 
+		 	el: "#select-test", 
+		 	data:{
+		 		infos:[
+		 			{info:1, val:"a1"}, 
+		 			{info:2, val:"a2"}, 
+		 			{info:3, val:"a3"}, 
+		 		], 
+		 		selected:[]
+		 	}
+		 
+		 }) 
+
+		var vm3 = new Vue({
+		
+			el: "#app2", 
+			data:{
+				info:"",
+			}
+		
+		})
+
+	</script>
+</body>
+</html>

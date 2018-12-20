@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>watch</title>
+	<script type="text/javascript" src="jquery-1.12.4.js"></script>
+	<script type="text/javascript" src="vue.min.js"></script>
+
+</head>
+<body>
+	<div id="app">
+		{{product}},价格是{{price}},含税的价格是{{priceInTax}},折合人民币{{priceInRMB}}元
+		<button @click="btnClick(10000)">加价10000日元</button>
+	</div>
+	
+	<script type="text/javascript">
+		var vm = new Vue({
+		
+			el: "#app",
+			data:{
+				price: 0,
+				product: "任天堂游戏",
+				priceInTax :0,
+				priceInRMB:0
+			},
+			watch:{
+				price: function(newVal, oldVal){
+					this.priceInTax = Math.round(this.price * 1.08),
+					this.priceInRMB = Math.round(this.price / 16.45)
+				}
+				// price 为监听属性  当其变化的时候调用回调函数 
+			},			
+			methods:{
+				btnClick:function (val) {
+					console.log(this.price);
+					this.price = Math.round(this.price + val);
+				}
+			}
+
+		
+		})
+		console.log(vm.$data);
+		vm.price = 29980;
+	</script>
+</body>
+</html>

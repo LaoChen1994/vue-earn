@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>v-model</title>
+	<script type="text/javascript" src="vue.min.js"></script>
+</head>
+<body>
+	<div id="myApp">
+		<h1>表单控件绑定</h1>
+		<input type="text" v-model="message" placeholder="请输入信息">
+		<p>{{message}}</p>
+	</div>
+	<script type="text/javascript">
+		var vm = new Vue({
+		
+			el: "#myApp", 
+			data:{
+				message:"你好啊vue js"
+			}
+		
+		})
+	</script>
+</body>
+</html>

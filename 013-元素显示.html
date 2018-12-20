@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>元素显示</title>
+	<script type="text/javascript" src="vue.min.js"></script>
+
+</head>
+<body>
+	 <div id="app">
+	 	<h1 v-show="result">游戏</h1>
+	 	<!-- true显示 false不显示 -->
+	 	<!-- 这里result是一个布尔值的变量 -->
+	 	<!-- 一般用v-if的可能多一些 -->
+
+	 	<button @click="btnClick">考试成绩</button>
+	 </div>
+	 <script type="text/javascript">
+	 	var vm = new Vue({
+	 	
+	 		el: "#app",
+	 		data:{
+	 			result:true,
+	 		},
+	 		methods:{
+	 			btnClick:function(){
+	 				this.result = !this.result;
+	 			}
+	 		}
+	 	
+	 	})
+	 	vm.result = false;
+	 </script>
+</body>
+</html>

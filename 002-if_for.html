@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="vue.min.js"></script>
+	<script type="text/javascript" src="jquery-1.12.4.js"></script>
+	<script type="text/javascript">
+		$(function () {
+			var vm = new Vue({
+			
+				el: "#test", 
+				data:{
+					seen:true, 
+					Card:[
+						{title:"曹休", price:"$100"}, 
+						{title:"贾诩", price:"$200"}, 
+						{title:"戏志才", price:"$400"}, 
+						{title:"郭嘉", price:"$500"}, 
+
+					]
+				}
+			
+			})			
+		})
+
+	</script>
+	
+</head>
+<body>
+
+	<div id="test">
+		<ul>
+			<h1 v-if="seen">武将价格</h1>
+			<li v-for="card in Card">
+				{{card.title}} / {{card.price}}
+			</li>
+		</ul>
+	</div>
+	
+
+</body>
+</html>

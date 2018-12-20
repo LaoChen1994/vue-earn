@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>列表数组循环</title>
+	<script type="text/javascript" src="vue.min.js"></script>
+</head>
+<body>
+	<div id="app">
+		<ul>
+			<li v-for="(game, index) in games">({{index+1}})  名称:{{game.title}} 售价:{{game.price}}</li>
+			<!--迭代器还自带一个index的属性 通过不完全解构得到 -->
+		</ul>
+	</div>
+	<script type="text/javascript">
+		var vm = new Vue({
+		
+			el: "#app",
+			data:{
+				games:[
+
+					{title:"跑跑卡丁车", price:500},
+					{title:"NBA2K19", price:400},
+
+				]
+			}
+		
+		})	
+		for (game of vm.games) {
+			// statement
+			console.log(game);
+		}
+	</script>
+</body>
+</html>

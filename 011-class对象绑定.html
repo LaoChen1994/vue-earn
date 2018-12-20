@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>class对象绑定</title>
+	<script type="text/javascript" src="vue.min.js"></script>
+	<style type="text/css" media="screen">
+		.big{
+			font-size: 30px;
+			font-weight: bold;
+		}
+		.active{
+			color: red;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<div :class="myClass">红色文本</div>
+		<button @click="btnClick">改变大小颜色</button>
+	</div>
+	<script type="text/javascript">
+		var vm = new Vue({
+		
+			el: "#app", 
+			data:{
+				myClass:{
+					big:true,
+					active:true
+				}
+				// 和之前的不同的是之前把是否显示作为一个属性绑定
+				// 这里每个样式作为myClass的一个对象进行绑定
+				// 这里的active 和 big是两个class的样式属性
+			},
+			methods:{
+				btnClick: function(){
+					this.myClass.big = !this.myClass.big;
+					this.myClass.active = !this.myClass.active;
+				}
+			}
+		
+		})
+	</script>
+</body>
+</html>

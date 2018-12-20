@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="jquery-1.12.4.js"></script>
+	<script type="text/javascript" src="vue.min.js"></script>
+
+</head>
+<body>
+	<div id="app">
+		{{product}},价格是{{price}},含税的价格是{{priceInTax}},折合人民币{{priceInRMB}}元
+	</div>
+	<script type="text/javascript">
+		var vm = new Vue({
+		
+			el: "#app",
+			data:{
+				price: 29980,
+				product: "任天堂游戏"
+			},
+			computed:{
+				priceInTax:function(){
+					return this.price * 1.08;
+				},
+				priceInRMB: function () {
+					// body...
+					return Math.ceil(this.priceInTax / 16.75);
+				}
+			}
+
+		
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>事件处理器</title>
+	<script type="text/javascript" src="vue.min.js"></script>
+</head>
+<body>
+	<div id="app">
+		<h1>事件处理器</h1>
+		<input id="txtName" v-on:keyup="txtKeyUp($event)">
+		<button id="btnOK" @click="btnClick($event)">OK</button>
+	</div>
+	<script>
+		var vm = new Vue({
+		
+			el: "#app",
+			data:{}, 
+			methods:{
+				txtKeyUp: function(event){
+					console.log(this); // 这里的this指向的是Vue对象
+
+					this.debugLog(event);
+				},
+				btnClick: function(event){
+					this.debugLog(event);
+				},
+				debugLog:function(event){
+					console.log(
+						event.srcElement.tagName,
+						event.srcElement.id,
+						event.srcElement.innerHTML,
+						event.key?event.key:"",
+					)	
+				}
+			}
+		
+		})
+	</script>
+</body>
+</html>

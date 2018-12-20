@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>class属性绑定</title>
+	<script type="text/javascript" src="vue.min.js"></script>
+	<style type="text/css" media="screen">
+		.active{
+			color: red;
+		}
+		.bg{
+			background: pink;
+			margin-bottom: 10px;
+		}
+	</style>
+</head>
+<body>
+	<div id="myApp">
+		
+		<div v-bind:class="{active:isActive,bg:isActive}">红文文本1</div>
+		<!-- v-bind  可以用:来代替 -->
+		<!-- 就像v-on可以用@来代替一样 简写 -->
+		<div :class="{active: isActive, bg:isActive}">红文文本2</div>
+		<button @click="btnClick">改变颜色</button>
+	</div>
+	<script type="text/javascript">
+		var vm = new Vue({
+		
+			el: "#myApp",
+			data:{
+				isActive: true,
+			},
+			methods:{
+				btnClick:function(){
+					this.isActive = !this.isActive;
+				}
+			}
+		
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="vue.min.js"></script>
+	<script type="text/javascript" src="jquery-1.12.4.js"></script>
+	<script type="text/javascript" src="componentTest.js"></script>
+</head>
+<body>
+	<div id="myApp">
+		<ul>
+			<game-item v-for="item in games" :item="item"> 
+				<!-- v-bind:item记住不要在中间加空格 -->
+			</game-item>	
+		</ul>
+	</div>
+
+</body>
+</html>

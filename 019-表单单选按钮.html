@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>表单单选按钮</title>
+	<script type="text/javascript" src="vue.min.js"></script>
+</head>
+<body>
+	<div id="myApp">
+		<h1>表单单选按钮</h1>
+		<h3>性别选择</h3>
+		<input type="radio" id="male" value="男" v-model="pickedSex">
+		<label for="male">男</label>
+		<br>
+		<input type="radio" id="female" value="女" v-model="pickedSex">
+		<label for="feamle">女</label>
+		<br>
+		<h3>选择爱好</h3>
+		<input type="radio" id="game" value="游戏" v-model="pickedHobby">
+		<label for="game">游戏</label>
+		<br>
+		<input type="radio" id="movie" value="电影" v-model="pickedHobby">
+		<label for="movie">电影</label>
+		<br>
+		<h3>选择结果</h3>
+		<p>性别:{{pickedSex}}</p>
+		<p>兴趣:{{pickedHobby}}</p>
+	</div>
+	<script type="text/javascript">
+		var vm = new Vue({
+		
+			el: "#myApp",
+			data:{
+				pickedSex:"", 
+				pickedHobby:"",
+			}
+		
+		})
+		vm.pickedSex = "未选择";
+		vm.pickedHobby = "未选择";
+	</script>
+</body>
+</html>

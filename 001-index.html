@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>首页</title>
+	<script type="text/javascript" src="vue.min.js"></script>
+</head>
+<body>
+	<div id="myApp">
+		{{message}} / {{ad}}
+	</div>
+	<script type="text/javascript">
+			new Vue({
+			
+				el: "#myApp", 
+				data:{
+					message: "hello Vue.js",
+					ad:"nope"
+				}
+			
+			})
+	</script>
+</body>
+</html>

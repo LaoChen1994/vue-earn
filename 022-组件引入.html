@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="vue.min.js"></script>
+	<script type="text/javascript">
+		window.onload = function(){
+			import componentA from "./a.vue"
+			Vue.component("myMadeA", {
+				// 利用props实现父组件向子组件的值的传递
+				props:["count", "title", "fz"], 
+				// 多行信息的时候需要把所需要的模板内容放在一个容器内
+				// 让浏览器认为被插入的是一个元素而不是多个
+				template:`
+				<div>
+				<h1>
+					{{title}} / {{fz}}
+				</h1>
+				<button @click='count++'>press me</button>
+
+				<div :style="{fontSize: fz+'px'}" >have pressed {{count}} times</div>
+				<button @click="$emit('enlarge-text', 1)" >enlarge text</button>
+				</div>
+				`,
+				
+			});
+
+			Vue.component('alert-box', {
+				template:`
+					<div>
+						<strong>Error!</strong>
+						<slot></slot>
+					</div>
+				`
+			})
+			var vm = new Vue({
+				el: "#app", 
+				data:{
+					setComponent:[
+						{id:1, title:"counter-1", count:0}, 
+						{id:2, title:"counter-2", count:0},					
+						{id:3, title:"counter-3", count:0},					
+					],
+					fontSize:16,
+					isError:false
+				},
+				methods: {
+						  lagerText(num) {
+						  	// 传入的参数num就是子类引用的参数值
+						  	console.log(1)
+						    // this.fontSize += 1;
+						    this.fontSize += num;
+
+						  },
+						},		
+			});
+
+
+			setTimeout(function(){
+				vm.isError = true
+			}, 2000);
+		}
+
+	</script>
+	<style type="text/css">
+		.error_info{
+			font-size: 20px;
+			color: red;
+		}
+	</style>
+</head>
+<body>
+	<div id="app" @enlarge-text="fontSize += $event">
+		<!-- 这里的$event 就是传入的参数值 -->
+		<!-- 子类与父类之间的信息传递主要通过事件的形式 -->
+		<ul :style="{fontSize: fontSize +'px'}">
+			{{fontSize}}
+			<li v-for="a in setComponent">{{a.title}}/{{a.count}}</li>
+		</ul>
+		<!-- @enlarge-text只需要绑定一次 -->
+		<my-made-a v-for="cot in setComponent" :count="cot.count" :title="cot.title" @enlarge-text="lagerText" :fz="fontSize"></my-made-a>
+		<!-- <button @click="isError = !isError">报错</button> -->
+		<alert-box :class="{'error_info': isError}">you are warned</alert-box>
+
+	</div>
+</body>
+</html>

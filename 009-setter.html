@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>setter</title>
+	<script type="text/javascript" src="jquery-1.12.4.js"></script>
+	<script type="text/javascript" src="vue.min.js"></script>
+
+</head>
+<body>
+	<div id="app">
+		{{product}},价格是{{price}},含税的价格是{{priceInTax}},折合人民币{{priceInRMB}}元
+		<button @click="btnClick(10000)">增加一万日元</button>
+	</div>
+	<script type="text/javascript">
+		var vm = new Vue({
+		
+			el: "#app",
+			data:{
+				price: 29980,
+				product: "任天堂游戏",
+			},
+			computed:{
+				priceInTax:{
+					get: function () {
+						return Math.round(this.price * 1.08);
+					}, // 这里的return指的是返回给priceInTax的值
+					set: function(value){
+						this.price = Math.round(value / 1.08);
+						// 这里由于price是和其他变量关联的纽带,所以当priceInTax 变化的时候只需要让price相应变化,其他变量自然变化
+						
+					}
+
+				},
+				priceInRMB: function () {
+					// body...
+					return Math.round(this.priceInTax / 16.75);
+				}
+			},
+			methods:{
+				btnClick:function(val){
+					console.log(`${this.priceInTax} / ${val}`)
+					this.priceInTax += val;
+				}
+			}
+
+		
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="vue.min.js"></script>
+	<script type="text/javascript" src="jquery-1.12.4.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			var vm = new Vue({
+			
+				el: "#app", 
+				data:{
+					show: true, 
+					content:[
+						{title:"html", status:"done"}, 
+						{title:"CSS", status:"done"}, 
+						{title:"Vue.Js", status:"no"}
+					],
+					message:"hello vue js",
+					num: 0.3
+				},
+				filters:{
+					toPercentage: function (content) {
+						// body...
+						var length = content.length;
+						var done = 0;
+						for (item of content) {
+							if (item.status == "done") {
+								// statement
+								done += 1
+							}
+						}
+						return `${done / length * 100}%`;
+					}
+				}
+			
+			})
+		})
+	</script>
+</head>
+<body>
+	<div id="app">
+		<div v-if="show">{{message}}</div>
+		<ol>
+			<li v-for="item in content">{{item.title}}</span>
+		</ol>
+		
+		<span>{{content | toPercentage}}</span>
+	</div>
+</body>
+</html>
