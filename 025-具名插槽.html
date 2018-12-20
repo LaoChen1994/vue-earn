@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>具名插槽</title>
+	<script type="text/javascript" src="vue.min.js"></script>
+</head>
+<body>
+	<div id="app">
+		<multi-slot>
+			<template slot='header'>头</template>
+			<template slot='main'>正文</template>
+			<template slot='footer'>尾部</template>
+			
+			<div slot="header">方法二</div>
+			<div slot="main" v-for="(item, key, index) in items">{{item}} | {{key}} | {{index}}</div>
+		</multi-slot>
+	</div>
+	<script type="text/javascript">
+		
+		Vue.component('multi-slot', {
+			template:`
+			<div id=container>
+				<header>
+					<h1>header</h1> 
+					<br>
+					<slot name="header"></slot>
+
+				</header>
+				<main>
+					<h2>main</h2>
+					<br>
+					<slot name="main"></slot>
+				</main>
+				<footer>
+					<h3>footer</h3>
+
+					<br>
+					<slot name="footer"></slot>
+
+				</footer>
+			</div>
+			`, 
+		})
+
+		var vm = new Vue({
+		
+			el: "#app", 
+			data:{
+				items:{a:"\omega", b:"\gamma", c:"\alpha"}
+			}		
+		})
+	</script>
+
+</body>
+</html>
