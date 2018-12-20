@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>slot插槽的作用</title>
+	<script type="text/javascript" src="vue.min.js"></script>
+</head>
+<body>
+	<div id="app">
+		<slot-test v-for='name in names' :item=name>你好</slot-test>
+	</div>
+	<script type="text/javascript">
+		Vue.component('slot-test', {
+			props:['item'], 
+			template:`<h1>{{item}}<slot></slot></h1>`
+		})
+		var vm = new Vue({
+		
+			el: "#app", 
+			data:{
+				names:["张三", "李四", "王五"],
+			},
+
+
+
+		
+		})
+	</script>
+</body>
+</html>
