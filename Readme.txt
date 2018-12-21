@@ -3,3 +3,5 @@
 小马视频：https://www.youtube.com/playlist?list=PLu3b11EPo_MfxhGAgO1LTJuDLTMCHIGLv
 Vue官方教程：
 https://cn.vuejs.org/v2/guide/
+
+一些学习看的论坛贴子：
