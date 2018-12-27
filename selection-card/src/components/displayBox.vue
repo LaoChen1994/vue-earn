@@ -16,7 +16,7 @@ export default {
   props:["info"],
   computed: {
     showInfo () {
-    	var info = "please select button"
+    	var info = "please press selection button"
 		if (this.info !="") {
 			info = this.info.content;
 			return info;
