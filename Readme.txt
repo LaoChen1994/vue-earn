@@ -10,3 +10,6 @@ https://ustbhuangyi.github.io/vue-analysis/components/async-component.html
 
 下面这个blog中有例子写的比较好
 https://blog.csdn.net/qq20004604/article/details/56496597
+
+vue父、子、孙组件间数据传递、事件传递
+https://juejin.im/post/5b570924e51d45195f0b3bb3
