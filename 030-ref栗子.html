@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>refs控制modal组件</title>
+	<script type="text/javascript" src="vue.min.js"></script>
+</head>
+<body>
+	<div id="app">
+		<div class="actions">
+			<button @click="toggleModal('new-item')">显示隐藏框</button>
+		</div>
+	
+		<modal ref="new-item">
+			<p>添加新的按钮</p>
+			<div slot="actions">
+				<button>按钮1</button>
+				<button>按钮2</button>
+			</div>
+		</modal>
+
+
+		<script type="text/template" id="modal-template">
+			<div class="modal" v-show="toggle">
+				<button class="modal_close" @click="close">X</button>
+				<h1>这是一个modal</h1>
+				<slot name="actions">
+					<button @click="close">关闭</button>
+				</slot>
+			</div>
+		</script>
+	</div>
+	<script type="text/javascript">
+		Vue.component("modal", {
+			template: "#modal-template",
+			data(){
+				return{
+					toggle:false, 
+				}
+			}, 
+			methods:{
+				close(){
+					this.toggle = false;
+				}
+			}
+		})
+		var vm = new Vue({
+		
+			el: "#app",
+			methods: {
+			  toggleModal (modal) {
+			  	console.log(this.$refs[modal].toggle);
+			  	this.$refs[modal].toggle = !this.$refs[modal].toggle;			    
+			  }
+			}
+		
+		})
+	</script>
+</body>
+</html>

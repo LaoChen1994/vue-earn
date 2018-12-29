@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>处理边界情况</title>
+	<script type="text/javascript" src="vue.min.js"></script>
+</head>
+<body>
+	<div id="app">
+		<span ref="message">{{msg}}</span>
+		<button @click="clickBtn" ref="myButton">点击我</button>
+		<ul>
+			<li v-for="n in 10" ref='numbers'>{{n}}</li>
+		</ul>
+	</div>
+	<script type="text/javascript">
+		// 绑定的ref对象可以通过this.$refs.name 其中name为绑定的名称
+		// 这种方式可以直接对原生JS的DOM进行操作
+		// 不用像原生的JS一样先选中 选择器然后再进行DOM操作
+
+		var vm = new Vue({
+		
+			el: "#app", 
+			data:{
+				msg:"请点击按钮"
+			},
+			methods: {
+			  clickBtn () {
+			  	// console.log(this.$refs);
+			    this.msg="大漠孤烟直";
+			    this.$refs.myButton.innerText = this.msg;
+			  }
+			}
+		
+		})
+
+		// 会直接覆盖修改由vue所控制的组件，因为vue控制的只是虚拟DOM
+		// 而DOM的修改会直接覆盖虚拟DOM
+		// 但是vue更改的还是虚拟DOM所以被覆盖
+
+
+		setTimeout(function () {
+			/* body... */
+			vm.$refs.message.innerText = "延迟2秒修改的html"
+		}, 2000)
+	</script>
+</body>
+</html>
