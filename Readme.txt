@@ -13,3 +13,6 @@ https://blog.csdn.net/qq20004604/article/details/56496597
 
 vue父、子、孙组件间数据传递、事件传递
 https://juejin.im/post/5b570924e51d45195f0b3bb3
+
+Vue关于 ref的资料和参考理解的栗子
+https://www.w3cplus.com/vue/accessing-dom-refs.html
